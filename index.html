@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="doc-title">Сайт автора</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #faf6f0;
+      --bg-card: #ffffff;
+      --bg-accent: #f3eadf;
+      --text-primary: #2c221e;
+      --text-secondary: #685850;
+      --accent: #9c4a27;
+      --accent-hover: #7d381b;
+      --border: #e5d8c8;
+      --shadow: 0 10px 30px rgba(44, 34, 30, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 246, 240, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .section-title {
+      font-size: 2.35rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .section-divider {
+      width: 56px;
+      height: 3px;
+      background-color: var(--accent);
+      margin-bottom: 36px;
+      border-radius: 2px;
+    }
+
+    /* Hero & About */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+      padding-top: 64px;
+    }
+
+    .subtitle {
+      display: inline-block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 3.3rem;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .hero-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--text-secondary);
+      border-left: 3px solid var(--accent);
+      padding-left: 18px;
+      margin-bottom: 28px;
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+    }
+
+    .author-photo-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-accent);
+      aspect-ratio: 4 / 5;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .author-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder-box {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Books Grid */
+    .books-bg {
+      background-color: var(--bg-accent);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .book-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .book-cover {
+      aspect-ratio: 3 / 4;
+      background: #efe5d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .book-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .book-meta {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .book-title {
+      font-size: 1.55rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .book-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-img-wrap {
+      aspect-ratio: 4 / 3;
+      background: var(--bg-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .gallery-caption {
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(24, 18, 16, 0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 36px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 36px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      nav ul {
+        gap: 16px;
+      }
+      .nav-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#about" class="brand" id="nav-brand">Cami Sultanzade</a>
+      <nav>
+        <ul>
+          <li><a href="#about">Об авторе</a></li>
+          <li><a href="#books">Книги</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ОБ АВТОРЕ -->
+    <section id="about" class="hero">
+      <div>
+        <span class="subtitle" id="author-subtitle">Писатель</span>
+        <h1 id="author-name">Загрузка...</h1>
+        <blockquote class="hero-quote" id="hero-quote"></blockquote>
+        <div class="about-text" id="about-paragraphs"></div>
+        <div class="socials" id="contacts"></div>
+      </div>
+      <div class="author-photo-wrap" id="author-photo-box">
+        <div class="placeholder-box">Фото автора загружается через админку Pages CMS</div>
+      </div>
+    </section>
+
+    <!-- КНИГИ -->
+    <div class="books-bg">
+      <section id="books">
+        <h2 class="section-title">Книги и произведения</h2>
+        <div class="section-divider"></div>
+        <div class="books-grid" id="books-grid"></div>
+      </section>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <section id="gallery">
+      <h2 class="section-title">Галерея</h2>
+      <div class="section-divider"></div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> <span id="footer-author"></span>. Все права защищены.</p>
+  </footer>
+
+  <!-- Модальное окно просмотра фото -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img id="lightbox-img" src="" alt="Просмотр изображения" />
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Преобразование пути из Pages CMS (/uploads/...) в относительный (uploads/...) для работы на GitHub Pages и в подпапках
+    function normalizeAssetPath(path) {
+      if (!path) return '';
+      if (path.startsWith('http://') || path.startsWith('https://')) return path;
+      return path.replace(/^\/+/, '');
+    }
+
+    function openLightbox(src) {
+      if (!src) return;
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    async function loadContent() {
+      try {
+        const [profileRes, booksRes, galleryRes] = await Promise.all([
+          fetch('content/profile.json'),
+          fetch('content/books.json'),
+          fetch('content/gallery.json')
+        ]);
+
+        const profile = await profileRes.json();
+        const booksData = await booksRes.json();
+        const galleryData = await galleryRes.json();
+
+        // Профиль
+        document.getElementById('doc-title').textContent = profile.site_title || profile.author_name;
+        document.getElementById('nav-brand').textContent = profile.author_name;
+        document.getElementById('author-name').textContent = profile.author_name;
+        document.getElementById('footer-author').textContent = profile.author_name;
+        document.getElementById('author-subtitle').textContent = profile.subtitle || '';
+
+        const quoteEl = document.getElementById('hero-quote');
+        if (profile.hero_quote) {
+          quoteEl.textContent = profile.hero_quote;
+        } else {
+          quoteEl.style.display = 'none';
+        }
+
+        const aboutContainer = document.getElementById('about-paragraphs');
+        aboutContainer.innerHTML = '';
+        (profile.about_paragraphs || []).forEach(text => {
+          const p = document.createElement('p');
+          p.textContent = text;
+          aboutContainer.appendChild(p);
+        });
+
+        const photoBox = document.getElementById('author-photo-box');
+        const avatarSrc = normalizeAssetPath(profile.avatar);
+        if (avatarSrc) {
+          photoBox.innerHTML = `<img src="${avatarSrc}" alt="${profile.author_name}">`;
+        }
+
+        const socialsContainer = document.getElementById('contacts');
+        socialsContainer.innerHTML = '';
+        (profile.socials || []).forEach(item => {
+          if (!item.url) return;
+          const a = document.createElement('a');
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'btn btn-outline';
+          a.textContent = item.label;
+          socialsContainer.appendChild(a);
+        });
+
+        // Книги
+        const booksGrid = document.getElementById('books-grid');
+        booksGrid.innerHTML = '';
+        (booksData.items || []).forEach(book => {
+          const coverSrc = normalizeAssetPath(book.cover);
+          const fileSrc = normalizeAssetPath(book.file_pdf);
+
+          const card = document.createElement('article');
+          card.className = 'book-card';
+
+          const coverHtml = coverSrc
+            ? `<img src="${coverSrc}" alt="${book.title}">`
+            : `<div class="placeholder-box serif" style="font-size:1.3rem;">«${book.title}»</div>`;
+
+          const metaParts = [book.genre, book.year].filter(Boolean).join(' • ');
+
+          let actionsHtml = '';
+          if (fileSrc) {
+            actionsHtml += `<a href="${fileSrc}" download class="btn btn-primary">Скачать книгу</a>`;
+            actionsHtml += `<a href="${fileSrc}" target="_blank" rel="noopener" class="btn btn-outline">Читать онлайн</a>`;
+          }
+          if (book.external_link) {
+            actionsHtml += `<a href="${book.external_link}" target="_blank" rel="noopener" class="btn btn-outline">Страница книги</a>`;
+          }
+          if (!actionsHtml) {
+            actionsHtml = `<span style="font-size:0.85rem; color:var(--text-secondary);">Файл книги скоро будет добавлен</span>`;
+          }
+
+          card.innerHTML = `
+            <div class="book-cover">${coverHtml}</div>
+            <div class="book-body">
+              <div class="book-meta">${metaParts}</div>
+              <h3 class="book-title">${book.title}</h3>
+              <p class="book-desc">${book.description || ''}</p>
+              <div class="book-actions">${actionsHtml}</div>
+            </div>
+          `;
+          booksGrid.appendChild(card);
+        });
+
+        // Галерея
+        const galleryGrid = document.getElementById('gallery-grid');
+        galleryGrid.innerHTML = '';
+        (galleryData.photos || []).forEach(photo => {
+          const imgSrc = normalizeAssetPath(photo.image);
+          const item = document.createElement('figure');
+          item.className = 'gallery-item';
+
+          const imgHtml = imgSrc
+            ? `<div class="gallery-img-wrap" onclick="openLightbox('${imgSrc}')"><img src="${imgSrc}" alt="${photo.caption || 'Фото'}"></div>`
+            : `<div class="gallery-img-wrap"><div class="placeholder-box">Место для фото<br>(добавьте через Pages CMS)</div></div>`;
+
+          const captionHtml = photo.caption
+            ? `<figcaption class="gallery-caption">${photo.caption}</figcaption>`
+            : '';
+
+          item.innerHTML = imgHtml + captionHtml;
+          galleryGrid.appendChild(item);
+        });
+
+      } catch (err) {
+        console.error('Ошибка загрузки данных сайта:', err);
+      }
+    }
+
+    loadContent();
+  </script>
+</body>
+</html>
