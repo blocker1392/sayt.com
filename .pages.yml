@@ -1,0 +1,113 @@
+media:
+  - name: covers
+    label: Обложки книг
+    input: uploads/covers
+    output: /uploads/covers
+    categories: [image]
+  - name: books
+    label: Файлы книг (PDF / EPUB)
+    input: uploads/books
+    output: /uploads/books
+  - name: gallery
+    label: Фотографии для галереи
+    input: uploads/gallery
+    output: /uploads/gallery
+    categories: [image]
+
+content:
+  - name: profile
+    label: Профиль и раздел «Об авторе»
+    type: file
+    path: content/profile.json
+    fields:
+      - name: site_title
+        label: Название сайта (в шапке и вкладке)
+        type: string
+        required: true
+      - name: author_name
+        label: Имя и фамилия автора
+        type: string
+        required: true
+      - name: subtitle
+        label: Короткий подзаголовок / жанр
+        type: string
+      - name: hero_quote
+        label: Цитата или девиз на главном экране
+        type: text
+      - name: avatar
+        label: Фото автора
+        type: image
+        options:
+          media: gallery
+      - name: about_paragraphs
+        label: Текст «Об авторе» (по абзацам)
+        type: string
+        list: true
+      - name: socials
+        label: Контакты и соцсети
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Название (Telegram, Instagram, Email)
+            type: string
+          - name: url
+            label: Ссылка (https://... или mailto:...)
+            type: string
+
+  - name: books
+    label: Книги и произведения
+    type: file
+    path: content/books.json
+    fields:
+      - name: items
+        label: Список книг
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Название книги
+            type: string
+            required: true
+          - name: year
+            label: Год издания
+            type: string
+          - name: genre
+            label: Жанр / категория
+            type: string
+          - name: cover
+            label: Обложка книги
+            type: image
+            options:
+              media: covers
+          - name: description
+            label: Аннотация / описание
+            type: text
+          - name: file_pdf
+            label: Файл книги (PDF или EPUB)
+            type: file
+            options:
+              media: books
+          - name: external_link
+            label: Внешняя ссылка (если книга на ЛитРес, Ridero и т.д.)
+            type: string
+
+  - name: gallery
+    label: Галерея изображений
+    type: file
+    path: content/gallery.json
+    fields:
+      - name: photos
+        label: Фотографии и иллюстрации
+        type: object
+        list: true
+        fields:
+          - name: image
+            label: Изображение
+            type: image
+            required: true
+            options:
+              media: gallery
+          - name: caption
+            label: Подпись к фото
+            type: string
